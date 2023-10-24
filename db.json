@@ -1,0 +1,38 @@
+{
+  "employee": [
+    {
+      "id": 2,
+      "name": "salim hafed",
+      "email": " salim@gmail.com",
+      "phone": "0601585210"
+    },
+    {
+      "id": 5,
+      "name": "Ali omari",
+      "email": "omari45@gmail.com",
+      "phone": "0625489312",
+      "active": true
+    },
+    {
+      "id": 6,
+      "name": "youssef lafkih",
+      "email": "lafkih581@gmail.com",
+      "phone": "+212657921069",
+      "active": true
+    },
+    {
+      "id": 7,
+      "name": "jowef",
+      "email": "jozeflafkih@gmail.com",
+      "phone": "062458960",
+      "active": true
+    },
+    {
+      "id": 8,
+      "name": "test",
+      "email": "t@gmail.com",
+      "phone": "0504082299",
+      "active": true
+    }
+  ]
+}

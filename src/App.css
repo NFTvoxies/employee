@@ -13,6 +13,19 @@
   }
 }
 
+.divbtn {
+  float: left;
+}
+
+.list-group-item {
+  
+  font-weight: bolder;
+}
+
+.empdet{
+  color: rgb(124, 28, 28);
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
