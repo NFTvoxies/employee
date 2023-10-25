@@ -16,6 +16,12 @@
 .divbtn {
   float: left;
 }
+.errmsg{
+  color: red;
+}
+.form-group{
+  text-align: left;
+}
 
 .list-group-item {
   
