@@ -1,10 +1,43 @@
 import React, {useState} from 'react'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 const Register = () => {
   const navigate = useNavigate();
+
+  const IsValidate = () => {
+    let isproceed = true;
+    let errormessage = 'Please enter a valid ';
+    if (formData.id === null || formData.id === '') {
+      isproceed = false;
+      errormessage += ' Username'
+    }
+    if (formData.fullname === null || formData.fullname === '') {
+      isproceed = false;
+      errormessage += ' ,Fullname'
+    }
+    if (formData.password === null || formData.password === '') {
+      isproceed = false;
+      errormessage += ' ,Password'
+    }
+    if (formData.email === null || formData.email === '') {
+      isproceed = false;
+      errormessage += ' ,Email'
+    }
+    if (!isproceed) {
+      toast.warning(errormessage);
+  }else {
+    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+\.*)+\.*$/.test(formData.email)) {
+
+    }else{
+      isproceed = false;
+      toast.warning('Please enter a valid email address')
+    }
+  }
+  return isproceed;
+}
 
   const [formData, setFormData] = useState({ id: '', email: '', 
   password: '', fullname: '', phone: '', country: '',gender: '', address: ''});
@@ -12,19 +45,22 @@ const Register = () => {
   const handleSubmit= (e) =>{
     e.preventDefault();
     
+    if (IsValidate()) {
 
     axios.post('http://localhost:3031/user', formData)
         .then((res) => {
-            alert("data saved successfully")
-            navigate('/')
+            toast.success("Registration successfully")
+            navigate('/login');
 
         }).catch((err) => {
             console.log(err)
         });
 
+       }
+
   };
   return (
-    <div>
+    
       <div className='offset-lg-3 col-lg-6'>
         <form className='container' onSubmit={handleSubmit}>
           <div className='card'>
@@ -41,6 +77,7 @@ const Register = () => {
                     <label>User Name <span className='errmsg'>*</span></label>
                     <input 
                     type='text' 
+                    
                     className='form-control'
                     value={formData.id}
                     onChange={(e) => setFormData({ ...formData, id: e.target.value })}
@@ -54,6 +91,7 @@ const Register = () => {
                   <div className='form-group'>
                     <label>Password <span className='errmsg'>*</span></label>
                     <input 
+                    
                     type='password' 
                     className='form-control'
                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}>
@@ -77,7 +115,7 @@ const Register = () => {
                 <div className='col-lg-6'>
                   <div className='form-group'>
                     <label>Email <span className='errmsg'>*</span></label>
-                    <input type='email' className='form-control'
+                    <input  className='form-control'
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     ></input>
                   </div>
@@ -123,7 +161,7 @@ const Register = () => {
                     <input type='radio' name='gender' value="male" 
                     onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
                     ></input>
-                    <label>Male</label>
+                    <label>Male </label>
                     <input type='radio' name='gender' value="female" 
                     onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
                     ></input>
@@ -137,8 +175,12 @@ const Register = () => {
             </div>
 
             <div className='card-footer'>
-              <button type='submit' className='btn btn-primary'> Register </button>
-              <a className='btn btn-danger'>Back</a>
+              <button type='submit' className='btn btn-primary mx-2'> Register </button>
+              <a href='/' className='btn btn-danger'>Back</a>
+              <div>
+                  <span> Already have an account ?</span> <Link to="/login">login here</Link>
+              </div>
+              
 
              
 
@@ -149,7 +191,7 @@ const Register = () => {
         </form>
       </div>
       
-    </div>
+  
   )
 }
 

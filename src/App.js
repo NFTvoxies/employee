@@ -11,8 +11,8 @@ import { ToastContainer } from 'react-toastify';
 function App() {
   return (
     <div className='App' >
-    <h1 className='mt-2 pb-5'>React Js CRUD Operations</h1>
-    <ToastContainer></ToastContainer>
+    
+    <ToastContainer theme='colored' position='top-center'  ></ToastContainer>
     <BrowserRouter>
   <Routes>
     <Route path='/' element={<EmpListing/>} >  </Route>

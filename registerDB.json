@@ -1,22 +1,22 @@
 {
   "user": [
     {
-      "id": "user1",
-      "email": "user1@example.com",
-      "password": "password123",
-      "fullname": "John Doe",
-      "phone": "123-456-7890",
-      "country": "United States",
-      "gender": "Male",
-      "address": "hay malaki salim"
+      "id": "admin",
+      "email": "admin@gmail.com",
+      "password": "admin",
+      "fullname": "admin",
+      "phone": "",
+      "country": "",
+      "gender": "",
+      "address": ""
     },
     {
-      "id": "2225",
+      "id": "youssef",
       "email": "lafkih581@gmail.com",
       "password": "1234",
       "fullname": "youssef lafkih",
-      "phone": "+212657921069",
-      "country": "",
+      "phone": "0657921069",
+      "country": "morocco",
       "gender": "male",
       "address": "RUE AIMEE FERRAUD LOT LAAYOUNE NR 26 A B CASA"
     }
