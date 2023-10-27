@@ -54,7 +54,8 @@ function Removefunction(id) {
   return (
     <><div className='header'>
           <Link className='btn btn-primary m-1' to={'/login'}>Logout</Link>
-      </div><div className="container">
+      </div>
+      <div className="container">
 
               <div className="card">
                   <div className="card-title">
@@ -71,7 +72,7 @@ function Removefunction(id) {
                                   {columns.map((c, i) => (
                                       <th className=" bg-dark text-white" key={i}>{c}</th>
                                   ))}
-                                  <th className=" bg-dark text-white"> Action</th>
+                                 
                               </tr>
                           </thead>
 
@@ -84,21 +85,24 @@ function Removefunction(id) {
                                       <td>{d.password}</td>
                                       <td>{d.fullname}</td>
                                       <td>{d.phone}</td>
-                                      <td>{d.country}</td>
+                                      <td>{d.country}</td> 
                                       <td>{d.gender}</td>
                                       <td>{d.address}</td>
-                                      <td>
-                                          <button onClick={() => { LoadEdit(d.id); } } className='btn btn-success mx-2'>Edit</button>
-                                          <button onClick={() => { Removefunction(d.id); } } className='btn btn-danger mx-2'>Remove</button>
-                                          <button onClick={() => { LoadDetail(d.id); } } className='btn btn-info mx-2'>Details</button>
-                                      </td>
-
+                                      <td>{d.role}</td>
+                                      <td>{d.Action} 
+                                      
+                                        <button onClick={() => 
+                                         { LoadEdit(d.id); } } className='btn btn-success m-2 '>Edit</button>
+                                        <button onClick={() => 
+                                         { Removefunction(d.id); } } className='btn btn-danger m-2'>Remove</button>
+                                        <button onClick={() => 
+                                         { LoadDetail(d.id); } } className='btn btn-info m-2'>Details</button>
+                                         </td>
+                                      
                                   </tr>
 
                               ))}
-                              <tr>
-
-                              </tr>
+                          
 
 
                           </tbody>
@@ -106,7 +110,8 @@ function Removefunction(id) {
 
                       </table>
 
-                  </div>
+                  
+              </div>
               </div>
           </div></>
     

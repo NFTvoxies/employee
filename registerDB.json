@@ -8,7 +8,9 @@
       "phone": "",
       "country": "",
       "gender": "",
-      "address": ""
+      "address": "",
+      "role": "admin",
+      "Action":""
     },
     {
       "id": "youssef",
@@ -18,7 +20,39 @@
       "phone": "0657921069",
       "country": "morocco",
       "gender": "male",
-      "address": "RUE AIMEE FERRAUD LOT LAAYOUNE NR 26 A B CASA"
+      "address": "RUE AIMEE FERRAUD LOT LAAYOUNE NR 26 A B CASA",
+      "role": "poweruser",
+      "Action":""
+    }
+  ],
+  "roleaccess":[
+    {
+      "role": "admin",
+      "menu": "customer",
+      "haveadd": true,
+      "haveedit": true,
+      "havedelete": true
+    },
+    {
+      "role": "admin",
+      "menu": "supplier",
+      "haveadd": true,
+      "haveedit": true,
+      "havedelete": true
+    },
+    {
+      "role": "poweruser",
+      "menu": "customer",
+      "haveadd": true,
+      "haveedit": true,
+      "havedelete": false
+    },
+    {
+      "role": "user",
+      "menu": "customer",
+      "haveadd": false,
+      "haveedit": false,
+      "havedelete": false
     }
   ]
 }
