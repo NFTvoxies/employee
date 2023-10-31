@@ -176,7 +176,7 @@ const Register = () => {
 
             <div className='card-footer'>
               <button type='submit' className='btn btn-primary mx-2'> Register </button>
-              <a href='/' className='btn btn-danger'>Back</a>
+              
               <div>
                   <span> Already have an account ?</span> <Link to="/login">login here</Link>
               </div>

@@ -7,6 +7,7 @@ import EmpDetails from './EmpDetails';
 import Login from './Login';
 import Register from './Register';
 import { ToastContainer } from 'react-toastify';
+import Appheader from './Appheader';
 
 function App() {
   return (
@@ -14,13 +15,14 @@ function App() {
     
     <ToastContainer theme='colored' position='top-center'  ></ToastContainer>
     <BrowserRouter>
+    <Appheader></Appheader>
   <Routes>
-    <Route path='/' element={<EmpListing/>} >  </Route>
-    <Route path='/login' element={<Login/>} >  </Route>
-    <Route path='/register' element={<Register/>} >  </Route>
-    <Route path='employee/create' element={<EmpCreate/>} >  </Route>
-    <Route path='/employee/edit/:empid' element={<EmpEdit/>} >  </Route>
-    <Route path='/employee/details/:empid' element={<EmpDetails/>} >  </Route>
+    <Route path="/" element={<EmpListing/>} />
+    <Route path="/login" element={<Login/>} />
+    <Route path="/register" element={<Register/>} />
+    <Route path="employee/create" element={<EmpCreate/>} />
+    <Route path="/employee/edit/:empid" element={<EmpEdit/>} />
+    <Route path="/employee/details/:empid" element={<EmpDetails/>} />
     
   </Routes>
   </BrowserRouter>

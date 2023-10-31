@@ -1,107 +1,112 @@
-import axios from 'axios';
-import React, {useState, useEffect} from 'react'
-import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
-  const [id, setid] = useState('');
-  const [password, setpassword] = useState('')
+  const [id, setid] = useState("");
+  const [password, setpassword] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     sessionStorage.clear();
-  }, [])
-  
+  }, []);
 
   const ProceedLogin = (e) => {
-  e.preventDefault();
-  if (validate()) {
-    axios.get('http://localhost:3031/user/' + id)
-      .then((res) => {
-        return res.data; 
-      })
-      .then((resp) => {
-        if (Object.keys(resp).length === 0) {
-          toast.error('Invalid username or password'); 
-        } else {
-          if (resp.password === password) {
-            toast.success('Login successful'); 
-            sessionStorage.setItem('id', id); 
-            navigate('/');
+    e.preventDefault();
+    if (validate()) {
+      axios
+        .get("http://localhost:3031/user/" + id)
+        .then((res) => {
+          return res.data;
+        })
+        .then((resp) => {
+          if (Object.keys(resp).length === 0) {
+            toast.error("Invalid username or password");
           } else {
-            toast.error('Invalid username or password'); 
+            if (resp.password === password) {
+              toast.success("Login successful");
+              sessionStorage.setItem("id", id);
+              sessionStorage.setItem("userrole", resp.role);
+              navigate("/");
+            } else {
+              toast.error("Invalid username or password");
+            }
           }
-        }
-      })
-      .catch((err) => {
-        toast.error('Login failed');
-      });
-  }
-};
-  const validate = () => {
-    let result=true;
-    if(id ==='' || id === null){
-      result = false;
-      toast.warning('please enter username');
+        })
+        .catch((err) => {
+          toast.error("Login failed");
+        });
     }
-    if(password ==='' || password === null){
+  };
+  const validate = () => {
+    let result = true;
+    if (id === "" || id === null) {
       result = false;
-      toast.warning('please enter password');
-      
+      toast.warning("please enter username");
+    }
+    if (password === "" || password === null) {
+      result = false;
+      toast.warning("please enter password");
     }
     return result;
-  }
+  };
   return (
     <div>
-        
-    <div className='row'>
-      <div className='offset-lg-3 col-lg-6'>
-        <form className='container' onSubmit={ProceedLogin}>
-          <div className='card'>
-            <div className='card-header'>
+      <div className="row">
+        <div className="offset-lg-3 col-lg-6">
+          <form className="container" onSubmit={ProceedLogin}>
+            <div className="card">
+              <div className="card-header">
                 <h2>User Login</h2>
-            </div>
+              </div>
 
-            <div className='card-body'>
-              <div className='form-group'>
-                <label>User Name <span className='errmsg'>*</span></label>
-                <input className='form-control' 
-                  value={id}
-                  onChange={e => setid(e.target.value)}
-                />
+              <div className="card-body">
+                <div className="form-group">
+                  <label>
+                    User Name <span className="errmsg">*</span>
+                  </label>
+                  <input
+                    className="form-control"
+                    value={id}
+                    onChange={(e) => setid(e.target.value)}
+                  />
+                </div>
               </div>
-            </div>
 
-            <div className='card-body'>
-              <div className='form-group'>
-                <label>Password <span className='errmsg'>*</span></label>
-                <input className='form-control' type='password'
-                value={password}
-                onChange={e => setpassword(e.target.value)}
-                 />
+              <div className="card-body">
+                <div className="form-group">
+                  <label>
+                    Password <span className="errmsg">*</span>
+                  </label>
+                  <input
+                    className="form-control"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setpassword(e.target.value)}
+                  />
+                </div>
               </div>
-            </div>
 
-            <div className='card-footer'>
-              <button className='btn btn-success my-2' type='submit' >Login</button>
-              <div>
-                   <Link to="/register" className='btn btn-outline-info'>Register</Link>
-                   
+              <div className="card-footer">
+                <button className="btn btn-success my-2" type="submit">
+                  Login
+                </button>
+                <div>
+                  <Link to="/register" className="btn btn-outline-info">
+                    Register
+                  </Link>
+                </div>
+                <div>
+                  <span className="text-black-50">New user ?</span>
+                </div>
               </div>
-              <div>
-              <span className='text-black-50'>New user ?</span>
-              </div>
-              
-                
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
-      
     </div>
-    
-    </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
