@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import './App.css';
 
 const Login = () => {
   const [id, setid] = useState("");
@@ -52,13 +53,13 @@ const Login = () => {
     return result;
   };
   return (
-    <div>
+    
       <div className="row">
         <div className="offset-lg-3 col-lg-6">
           <form className="container" onSubmit={ProceedLogin}>
             <div className="card">
               <div className="card-header">
-                <h2>User Login</h2>
+                <h2 style={{color:"blueviolet"}}>User Login</h2>
               </div>
 
               <div className="card-body">
@@ -89,11 +90,11 @@ const Login = () => {
               </div>
 
               <div className="card-footer">
-                <button className="btn btn-success my-2" type="submit">
+                <button className="btn text-bg-dark my-2" type="submit" >
                   Login
                 </button>
                 <div>
-                  <Link to="/register" className="btn btn-outline-info">
+                  <Link to="/register" className="btn text-white  " style={{backgroundColor:"blueviolet"}}>
                     Register
                   </Link>
                 </div>
@@ -105,7 +106,7 @@ const Login = () => {
           </form>
         </div>
       </div>
-    </div>
+    
   );
 };
 

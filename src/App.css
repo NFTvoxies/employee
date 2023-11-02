@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  
+
 }
 
 .App-logo {
@@ -14,12 +16,12 @@
 }
 
 
-
 .errmsg{
   color: red;
 }
 .form-group{
   text-align: left;
+  
 }
 
 .list-group-item {
@@ -45,7 +47,7 @@
 }
 .card{
   margin-top: 120px;
-  position: relative;
+  position:absolute;
 }
 
 
@@ -75,6 +77,8 @@
   display: flex;
   align-items: center;
 }
+
+
 
 
 @keyframes App-logo-spin {

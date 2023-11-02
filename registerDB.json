@@ -32,7 +32,8 @@
       "phone": "0654879132",
       "country": "",
       "gender": "male",
-      "address": ""
+      "address": "",
+      "role": "user"
     }
   ],
   "roleaccess": [

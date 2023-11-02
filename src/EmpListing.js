@@ -29,10 +29,12 @@ const EmpListing = () => {
   const [columns, setColumns] = useState([]);
   const [records, setRecords] = useState([]);
 
-  const [haveedit, sethaveedit] = useState(false);
-  const [haveview, sethaveview] = useState(false);
-  const [haveadd, sethaveadd] = useState(false);
-  const [havedelete, sethavedelete] = useState(false);
+  const [permissions, setPermissions] = useState({
+    view: false,
+    add: false,
+    edit: false,
+    delete: false,
+  });
 
   useEffect(() => {
    
@@ -49,30 +51,22 @@ const EmpListing = () => {
 
   const GetUserAccess = () => {
     const userrole =
-      sessionStorage.getItem("userrole") != null
-        ? sessionStorage.getItem("userrole").toString()
-        : "";
+      sessionStorage.getItem("userrole") ;
         
-    axios
-      .get(
-        "http://localhost:3035/roleaccess?role=" + userrole + "&menu=employee"
-      )
-      .then((res) => {
-        if (!res.ok) {
-          return false;
-        }
-        return res.json();
-      })
-      .then((res) => {
-        if (res.length > 0) {
-          sethaveview(true);
-          let userobj = res[0];
-          sethaveedit(userobj.haveedit);
-          sethavedelete(userobj.havedelete);
-          sethaveadd(userobj.haveadd);
-        }
-      });
-  };
+        axios
+        .get("http://localhost:3035/roleaccess?role=" + userrole + "&menu=employee")
+        .then((res) => {
+          if (res.data && res.data.length > 0) {
+            const access = res.data[0];
+            setPermissions({
+              view: true,
+              add: access.haveadd,
+              edit: access.haveedit,
+              delete: access.havedelete,
+            });
+          }
+        });
+    };
   return (
     <div className="container">
       <div className="card">
@@ -113,22 +107,28 @@ const EmpListing = () => {
                     <td>
                       {d.Action}
 
-                      <button
-                        onClick={() => {
-                          LoadEdit(d.id);
-                        }}
-                        className="btn btn-success m-2 "
-                      >
-                        Edit
-                      </button>
-                      <button
-                        onClick={() => {
-                          Removefunction(d.id);
-                        }}
-                        className="btn btn-danger m-2"
-                      >
-                        Remove
-                      </button>
+                      {permissions.edit && (
+                        <button
+                          onClick={() => {
+                            LoadEdit(d.id);
+                          }}
+                          className="btn btn-success m-2"
+                        >
+                          Edit
+                        </button>
+                      )}
+
+                      {permissions.delete && (
+                        <button
+                          onClick={() => {
+                            Removefunction(d.id);
+                          }}
+                          className="btn btn-danger m-2"
+                        >
+                          Remove
+                        </button>
+                      )}
+
                       <button
                         onClick={() => {
                           LoadDetail(d.id);

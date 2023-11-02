@@ -33,6 +33,13 @@
       "email": "t@gmail.com",
       "phone": "0504082299",
       "active": true
+    },
+    {
+      "id": 9,
+      "name": "sami",
+      "email": "lafk1@gmail.com",
+      "phone": "00065792",
+      "active": true
     }
   ]
 }
