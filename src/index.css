@@ -5,12 +5,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(to bottom, blueviolet 0%, rgb(162, 74, 162) 100%);
+  background: linear-gradient(to bottom, #8B008B, #4B0082);
+  
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 
- 
-
-  padding: 0;
-  height: 100%;
 
 }
 

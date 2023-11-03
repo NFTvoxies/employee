@@ -54,21 +54,22 @@ const Login = () => {
   };
   return (
     
-      <div className="row">
+    <div className="card-container">
         <div className="offset-lg-3 col-lg-6">
-          <form className="container" onSubmit={ProceedLogin}>
-            <div className="card">
-              <div className="card-header">
+          <form className="container " onSubmit={ProceedLogin}>
+            <div className="card ">
+            <div className="card-blur glass">
+              <div className="card-header ">
                 <h2 style={{color:"blueviolet"}}>User Login</h2>
               </div>
 
-              <div className="card-body">
-                <div className="form-group">
-                  <label>
-                    User Name <span className="errmsg">*</span>
+              <div className="card-body ">
+                <div className="form-group ">
+                  <label className="input-label ">
+                    Username <span className="errmsg">*</span>
                   </label>
-                  <input
-                    className="form-control"
+                  <input 
+                    className="form-control  glass"
                     value={id}
                     onChange={(e) => setid(e.target.value)}
                   />
@@ -77,11 +78,11 @@ const Login = () => {
 
               <div className="card-body">
                 <div className="form-group">
-                  <label>
+                  <label className="input-label ">
                     Password <span className="errmsg">*</span>
                   </label>
                   <input
-                    className="form-control"
+                    className="form-control glass"
                     type="password"
                     value={password}
                     onChange={(e) => setpassword(e.target.value)}
@@ -101,6 +102,7 @@ const Login = () => {
                 <div>
                   <span className="text-black-50">New user ?</span>
                 </div>
+              </div>
               </div>
             </div>
           </form>
